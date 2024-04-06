@@ -1,0 +1,86 @@
+{
+	"name": "grammar-ai",
+	"displayName": "Grammar-AI",
+	"description": "Grammar-AI is a Visual Studio Code extension that leverages AI technology to enhance your writing experience. Quickly correct grammar errors and receive variable name suggestions with ease, directly within your code editor.",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.87.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onStartupFinished"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "grammar-ai.correctGrammar",
+				"title": "Correct Grammar"
+			},
+			{
+				"command": "grammar-ai.suggestVariableNames",
+				"title": "Suggest Variable Names"
+			},
+			{
+				"command": "grammar-ai.openQuestion",
+				"title": "Open Question"
+			}
+		],
+		"submenus": [
+			{
+				"id": "assistant.submenu",
+				"label": "Grammar-AI"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"submenu": "assistant.submenu",
+					"group": "navigation"
+				}
+			],
+			"assistant.submenu": [
+				{
+					"command": "grammar-ai.correctGrammar",
+					"group": "1_correction",
+					"when": "editorHasSelection"
+				},
+				{
+					"command": "grammar-ai.suggestVariableNames",
+					"group": "2_suggestion",
+					"when": "editorHasSelection"
+				},
+				{
+					"command": "grammar-ai.openQuestion",
+					"group": "3_question",
+					"when": "editorHasSelection"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"test": "vscode-test"
+	},
+	"devDependencies": {
+		"@types/mocha": "^10.0.6",
+		"@types/node": "18.x",
+		"@types/vscode": "^1.87.0",
+		"@typescript-eslint/eslint-plugin": "^7.0.2",
+		"@typescript-eslint/parser": "^7.0.2",
+		"@vscode/test-cli": "^0.0.6",
+		"@vscode/test-electron": "^2.3.9",
+		"eslint": "^8.56.0",
+		"typescript": "^5.3.3"
+	},
+	"dependencies": {
+		"@google-cloud/aiplatform": "^3.17.0",
+		"axios": "^1.6.8"
+	}
+}
