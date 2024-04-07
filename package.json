@@ -2,7 +2,11 @@
 	"name": "grammar-ai",
 	"displayName": "Grammar-AI",
 	"description": "Grammar-AI is a Visual Studio Code extension that leverages AI technology to enhance your writing experience. Quickly correct grammar errors and receive variable name suggestions with ease, directly within your code editor.",
-	"version": "0.0.1",
+	"version": "1.0.0",
+	"author": {
+		"name": "Jose Alfredo Vallejo",
+		"email": "josealfredovallejo25@gmail.com"
+	},
 	"engines": {
 		"vscode": "^1.87.0"
 	},
@@ -16,7 +20,7 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "grammar-ai.correctGrammar",
+				"command": "grammar-ai.suggestGrammarText",
 				"title": "Correct Grammar"
 			},
 			{
@@ -43,7 +47,7 @@
 			],
 			"assistant.submenu": [
 				{
-					"command": "grammar-ai.correctGrammar",
+					"command": "grammar-ai.suggestGrammarText",
 					"group": "1_correction",
 					"when": "editorHasSelection"
 				},
@@ -54,8 +58,7 @@
 				},
 				{
 					"command": "grammar-ai.openQuestion",
-					"group": "3_question",
-					"when": "editorHasSelection"
+					"group": "3_question"
 				}
 			]
 		}
